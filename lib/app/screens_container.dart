@@ -11,7 +11,7 @@ class ScreensContainer extends StatefulWidget {
 class _ScreensContainerState extends State<ScreensContainer> {
   int _selectedIndex = 0;
 
-  List<Widget> _appScreens = [
+  final List<Widget> _appScreens = [
     HomeScreen(),
     FaturaScreen(),
     CartaoScreen(),
@@ -29,6 +29,7 @@ class _ScreensContainerState extends State<ScreensContainer> {
     return Scaffold(
       body: _appScreens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: true,
         elevation: 12,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
