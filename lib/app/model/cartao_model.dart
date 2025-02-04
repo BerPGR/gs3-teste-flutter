@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gs3/app/model/lancamento_model.dart';
 
 class CartaoModel {
   final int id;
@@ -6,6 +7,7 @@ class CartaoModel {
   final String owner;
   final double limit;
   final int bestDay;
+  final List<LancamentoModel> lancamentos;
   final List<Color> cardColor;
 
   CartaoModel({
@@ -14,6 +16,7 @@ class CartaoModel {
     required this.owner,
     required this.limit,
     required this.bestDay,
+    required this.lancamentos,
     required this.cardColor
   });
 }
