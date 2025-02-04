@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gs3/app/screens_container.dart';
 import 'package:gs3/app/view/not_found_screen.dart';
-import 'package:gs3/app/view/posting_screen.dart';
+import 'package:gs3/app/view/posting/posting_screen.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});

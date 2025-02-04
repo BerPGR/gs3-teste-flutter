@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gs3/app/view/home_screen.dart';
+import 'package:gs3/app/view/home/home_screen.dart';
 
 class ScreensContainer extends StatefulWidget {
   const ScreensContainer({super.key});
