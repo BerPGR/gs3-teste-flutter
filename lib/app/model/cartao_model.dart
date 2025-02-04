@@ -1,10 +1,10 @@
-class CardModel {
+class CartaoModel {
   final String number;
   final String owner;
   final double limit;
   final int bestDay;
 
-  CardModel({
+  CartaoModel({
     required this.number,
     required this.owner,
     required this.limit,
