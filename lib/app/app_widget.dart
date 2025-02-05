@@ -20,7 +20,7 @@ class AppWidget extends StatelessWidget {
             case "/":
               return MaterialPageRoute(builder: (context) => ScreensContainer());
             case "/posting":
-              return MaterialPageRoute(builder: (context) => PostingScreen());
+              return MaterialPageRoute(builder: (context) => PostingScreen(), settings: settings);
             default:
               return MaterialPageRoute(builder: (context) => NotFoundScreen());
           }
