@@ -66,7 +66,7 @@ class FaturaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Essa página não existe"),
+      child: Text("A página de Fatura não existe"),
     );
   }
 }
@@ -77,7 +77,7 @@ class CartaoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Essa página não existe"),
+      child: Text("A página de Cartão não existe"),
     );
   }
 }
@@ -88,7 +88,7 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Essa página não existe"),
+      child: Text("A página de Shop não existe"),
     );
   }
 }
