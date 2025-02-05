@@ -1,7 +1,7 @@
-# GS3 Tecnologia - Desafio Flutter
+# GS3 Tecnologia - Teste Flutter
 
 ## 📌 Descrição
-Este projeto é um aplicativo Flutter desenvolvido para o desafio técnico da **GS3 Tecnologia**. O aplicativo permite a seleção de cartões e exibe informações sobre suas respectivas faturas e últimos lançamentos.
+Este projeto é um aplicativo Flutter desenvolvido para o teste técnico da **GS3 Tecnologia**. O aplicativo permite a seleção de cartões e exibe informações sobre lançamentos dos cartões.
 
 ### O app foi feito apenas para **Android**
 
@@ -19,7 +19,9 @@ Este projeto é um aplicativo Flutter desenvolvido para o desafio técnico da **
 O projeto segue a arquitetura **MVVM (Model-View-ViewModel)**, que separa as responsabilidades em três camadas principais:  
 - **Model**: Representa os dados do aplicativo.  
 - **ViewModel**: Gerencia a lógica de negócios e o estado da aplicação.  
-- **View**: Responsável pela interface gráfica e exibição dos dados.  
+- **View**: Responsável pela interface gráfica e exibição dos dados.
+
+A **ViewModel** contém um arquivo que possue o **ChangeNotifier** para gerenciamento do estado do projeto.
 
 Utilizei também uma pasta **Shared** no desenvolvimento do aplicativo, que contém utilitários e widgets reutilizáveis para o uso da aplicação. Essa pasta se encontra no seguinte caminho:
 ``` plaintext
