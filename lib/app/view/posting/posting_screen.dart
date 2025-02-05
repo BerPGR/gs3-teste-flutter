@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gs3/app/shared/utils/data_parser.dart';
 import 'package:gs3/app/shared/utils/number_parser.dart';
 import 'package:gs3/app/shared/utils/show_bottom_dialog.dart';
-import 'package:gs3/app/shared/widget/cartao.dart';
+import 'package:gs3/app/shared/widget/cartao_widget.dart';
 
 class PostingScreen extends StatefulWidget {
   const PostingScreen({super.key});
@@ -44,7 +44,16 @@ class _PostingScreenState extends State<PostingScreen>
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
 
     final cartao = args?['cartao'];
-    final lancamentos = args?['lancamentos'];
+    final postings = args?['lancamentos'];
+
+    final Map<String, List<dynamic>> groupedPostings = {};
+    for (var posting in postings) {
+      String mesAno = formatarMesAno(posting.date);
+      if (!groupedPostings.containsKey(mesAno)) {
+        groupedPostings[mesAno] = [];
+      }
+      groupedPostings[mesAno]!.add(posting);
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -66,35 +75,62 @@ class _PostingScreenState extends State<PostingScreen>
           child: Column(children: [
             Cartao(cartao: cartao),
             Expanded(
-              child: ListView.builder(
-                itemCount: lancamentos.length,
-                itemBuilder: (context, index) {
-                  final lancamento = lancamentos[index];
-                  return ListTile(
-                    onTap: () => mostrarDetalhesLancamento(context, lancamento),
-                    leading: SvgPicture.asset(lancamento.imagem, width: 30),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "R\$${formatarValor(lancamento.valor)}",
+              child: ListView(
+                children: groupedPostings.entries.map((entry) {
+                  String mesAno = entry.key;
+                  List<dynamic> lancamentos = entry.value;
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 26.0),
+                        child: Text(
+                          mesAno,
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF2890CF),
+                          ),
                         ),
-                        Text("")
-                      ],
-                    ),
-                    title: Text(
-                      lancamento.descricao,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      formatarSubtitulo(lancamento.data),
-                      style: TextStyle(fontSize: 14),
-                    ),
+                      ),
+                      ...lancamentos.map((posting) {
+                        return ListTile(
+                          onTap: () =>
+                              mostrarDetalhesLancamento(context, posting),
+                          leading: SvgPicture.asset(posting.image, width: 30),
+                          trailing: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "R\$${formatarValor(posting.value)}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(posting.installments == 0
+                                  ? ""
+                                  : "em ${posting.installments}x")
+                            ],
+                          ),
+                          title: Text(
+                            posting.description,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(
+                            formatarSubtitulo(posting.date),
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        );
+                      }).toList(),
+                    ],
                   );
-                },
+                }).toList(),
               ),
             ),
           ]),
