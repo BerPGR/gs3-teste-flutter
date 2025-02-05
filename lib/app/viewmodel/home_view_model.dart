@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gs3/app/model/cartao_model.dart';
 import 'package:gs3/app/model/lancamento_model.dart';
+import 'package:gs3/app/view/home/widgets/ultimos_lancamentos_widget.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final List<CartaoModel> _cartoes = [
@@ -10,37 +11,43 @@ class HomeViewModel extends ChangeNotifier {
         owner: "GS3 TECH",
         limit: 7867.80,
         bestDay: 12,
-        lancamentos: [
+        postings: [
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "Mercado",
-              valor: 89.23,
-              data: DateTime.now()),
+            installments: 0,
+            image: "assets/images/shop.svg",
+              description: "Mercado",
+              value: 89.23,
+              date: DateTime(2025, 2, 5, 8, 42)),
           LancamentoModel(
-            imagem: "assets/images/motion.svg",
-              descricao: "Gasolina",
-              valor: 60.00,
-              data: DateTime.now()),
+            installments: 0,
+            image: "assets/images/motion.svg",
+              description: "Gasolina",
+              value: 60.00,
+              date: DateTime(2025, 2, 3, 07, 34)),
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "Restaurante",
-              valor: 80.50,
-              data: DateTime.now().subtract(Duration(days: 5,hours: 3))),
+            installments: 0,
+            image: "assets/images/shop.svg",
+              description: "Restaurante",
+              value: 80.50,
+              date: DateTime(2025, 2, 3, 12, 34)),
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "Farmácia",
-              valor: 7.85,
-              data: DateTime.now().subtract(Duration(days: 5))),
+            installments: 0,
+            image: "assets/images/shop.svg",
+              description: "Farmácia",
+              value: 7.85,
+              date: DateTime(2025, 1, 27, 8, 12)),
           LancamentoModel(
-            imagem: "assets/images/leisure.svg",
-              descricao: "Netflix",
-              valor: 39.90,
-              data: DateTime.now().subtract(Duration(days: 9))),
+            installments: 0,
+            image: "assets/images/leisure.svg",
+              description: "Netflix",
+              value: 39.90,
+              date: DateTime(2025, 1, 27, 10)),
           LancamentoModel(
-            imagem: "assets/images/motion.svg",
-              descricao: "Uber",
-              valor: 12.97,
-              data: DateTime.now().subtract(Duration(days: 12))),
+            installments: 0,
+            image: "assets/images/motion.svg",
+              description: "Uber",
+              value: 12.97,
+              date: DateTime(2025, 1, 23, 9)),
         ],
         cardColor: [
           Color(0xFF2B66BC),
@@ -52,37 +59,43 @@ class HomeViewModel extends ChangeNotifier {
         owner: "Jane Doe",
         limit: 2341.27,
         bestDay: 20,
-                lancamentos: [
+                postings: [
           LancamentoModel(
-            imagem: "assets/images/study.svg",
-              descricao: "Curso Inglês",
-              valor: 99.90,
-              data: DateTime.now().subtract(Duration(days: 5))),
+            installments: 12,
+            image: "assets/images/study.svg",
+              description: "Curso Inglês",
+              value: 899.90,
+              date: DateTime(2025, 2, 1, 9)),
           LancamentoModel(
-            imagem: "assets/images/leisure.svg",
-              descricao: "Crunchyroll",
-              valor: 29.90,
-              data: DateTime.now().subtract(Duration(days: 7))),
+            installments: 0,
+            image: "assets/images/leisure.svg",
+              description: "Crunchyroll",
+              value: 29.90,
+              date: DateTime(2025, 1, 23, 12, 34)),
           LancamentoModel(
-            imagem: "assets/images/motion.svg",
-              descricao: "BRB",
-              valor: 3.80,
-              data: DateTime.now().subtract(Duration(days: 12))),
+            installments: 0,
+            image: "assets/images/motion.svg",
+              description: "BRB",
+              value: 3.80,
+              date: DateTime(2025, 1, 13, 07, 34)),
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "Zé Padoca's",
-              valor: 13.47,
-              data: DateTime.now().subtract(Duration(days: 12))),
+            installments: 2,
+            image: "assets/images/shop.svg",
+              description: "Zé Padoca's",
+              value: 13.47,
+              date: DateTime(2024, 12, 24, 14, 20)),
           LancamentoModel(
-            imagem: "assets/images/tech.svg",
-              descricao: "Apple",
-              valor: 4.50,
-              data: DateTime.now().subtract(Duration(days: 20))),
+            installments: 6,
+            image: "assets/images/tech.svg",
+              description: "Apple",
+              value: 27.00,
+              date: DateTime(2024, 12, 3, 12, 34)),
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "CanelaCafe",
-              valor: 25.00,
-              data: DateTime.now().subtract(Duration(days: 24))),
+            installments: 0,
+            image: "assets/images/shop.svg",
+              description: "CanelaCafe",
+              value: 25.00,
+              date: DateTime(2024, 12, 3, 12, 34)),
         ],
         cardColor: [Color(0xFF017375), Color(0xFF005153)]),
     CartaoModel(
@@ -91,37 +104,43 @@ class HomeViewModel extends ChangeNotifier {
         owner: "John Doe",
         limit: 829.00,
         bestDay: 4,
-                lancamentos: [
+                postings: [
           LancamentoModel(
-            imagem: "assets/images/study.svg",
-              descricao: "Curso Java",
-              valor: 150.75,
-              data: DateTime.now().subtract(Duration(days: 4))),
+            installments: 10,
+            image: "assets/images/study.svg",
+              description: "Curso Java",
+              value: 150.75,
+              date: DateTime(2024, 2, 5, 2, 12)),
           LancamentoModel(
-            imagem: "assets/images/tech.svg",
-              descricao: "Pichau*Informatica",
-              valor: 200.00,
-              data: DateTime.now().subtract(Duration(days: 5))),
+            installments: 8,
+            image: "assets/images/tech.svg",
+              description: "Pichau*Informatica",
+              value: 200.00,
+              date: DateTime(2025, 2, 1, 17, 00)),
           LancamentoModel(
-            imagem: "assets/images/leisure.svg",
-              descricao: "Steam Game",
-              valor: 80.50,
-              data: DateTime.now().subtract(Duration(days: 5))),
+            installments: 0,
+            image: "assets/images/leisure.svg",
+              description: "Steam Game",
+              value: 80.50,
+              date: DateTime(2025, 2, 1, 13, 50)),
           LancamentoModel(
-            imagem: "assets/images/tech.svg",
-              descricao: "Teclado Kabum",
-              valor: 50.00,
-              data: DateTime.now().subtract(Duration(days: 6))),
+            installments: 5,
+            image: "assets/images/tech.svg",
+              description: "Teclado Kabum",
+              value: 500.00,
+              date: DateTime(2025, 1, 23, 16, 48)),
           LancamentoModel(
-            imagem: "assets/images/leisure.svg",
-              descricao: "Streaming",
-              valor: 39.90,
-              data: DateTime.now().subtract(Duration(days: 9))),
+            installments: 0,
+            image: "assets/images/leisure.svg",
+              description: "Streaming",
+              value: 39.90,
+              date: DateTime(2025, 1, 5, 12, 34)),
           LancamentoModel(
-            imagem: "assets/images/motion.svg",
-              descricao: "Uber",
-              valor: 25.00,
-              data: DateTime.now().subtract(Duration(days: 12))),
+            installments: 0,
+            image: "assets/images/motion.svg",
+              description: "Uber",
+              value: 25.00,
+              date: DateTime(2025, 1, 5, 09, 12)),
         ],
         cardColor: [Color(0xFF8f07bc), Color(0xFF720099)]),
   ];
@@ -143,6 +162,6 @@ class HomeViewModel extends ChangeNotifier {
   List<LancamentoModel> get ultimosLancamentos {
     final cartao = cartaoSelecionado.value;
     if (cartao == null) return [];
-    return cartao.lancamentos.take(5).toList();
+    return cartao.postings.take(5).toList();
   }
 }
