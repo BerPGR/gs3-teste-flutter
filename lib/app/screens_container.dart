@@ -30,7 +30,8 @@ class _ScreensContainerState extends State<ScreensContainer> {
       body: _appScreens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
-        elevation: 12,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey.shade100,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
