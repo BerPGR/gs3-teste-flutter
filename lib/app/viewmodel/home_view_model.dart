@@ -8,19 +8,19 @@ class HomeViewModel extends ChangeNotifier {
         id: 0,
         number: "1111 2222",
         owner: "GS3 TECH",
-        limit: 1200.50,
-        bestDay: 20,
+        limit: 7867.80,
+        bestDay: 12,
         lancamentos: [
           LancamentoModel(
             imagem: "assets/images/shop.svg",
               descricao: "Mercado",
               valor: 150.75,
-              data: DateTime.now().subtract(Duration(days: 1))),
+              data: DateTime.now()),
           LancamentoModel(
             imagem: "assets/images/motion.svg",
               descricao: "Gasolina",
               valor: 200.00,
-              data: DateTime.now().subtract(Duration(days: 3))),
+              data: DateTime.now()),
           LancamentoModel(
             imagem: "assets/images/shop.svg",
               descricao: "Restaurante",
@@ -30,7 +30,7 @@ class HomeViewModel extends ChangeNotifier {
             imagem: "assets/images/shop.svg",
               descricao: "Farmácia",
               valor: 50.00,
-              data: DateTime.now().subtract(Duration(days: 6))),
+              data: DateTime.now().subtract(Duration(days: 5))),
           LancamentoModel(
             imagem: "assets/images/leisure.svg",
               descricao: "Streaming",
@@ -50,7 +50,7 @@ class HomeViewModel extends ChangeNotifier {
         id: 1,
         number: "3333 4444",
         owner: "Jane Doe",
-        limit: 1200.50,
+        limit: 2341.27,
         bestDay: 20,
                 lancamentos: [
           LancamentoModel(
@@ -72,7 +72,7 @@ class HomeViewModel extends ChangeNotifier {
             imagem: "assets/images/shop.svg",
               descricao: "Farmácia",
               valor: 50.00,
-              data: DateTime.now().subtract(Duration(days: 13))),
+              data: DateTime.now().subtract(Duration(days: 12))),
           LancamentoModel(
             imagem: "assets/images/leisure.svg",
               descricao: "Streaming",
@@ -89,8 +89,8 @@ class HomeViewModel extends ChangeNotifier {
         id: 2,
         number: "5555 6666",
         owner: "John Doe",
-        limit: 1200.50,
-        bestDay: 20,
+        limit: 829.00,
+        bestDay: 4,
                 lancamentos: [
           LancamentoModel(
             imagem: "assets/images/study.svg",
@@ -101,7 +101,7 @@ class HomeViewModel extends ChangeNotifier {
             imagem: "assets/images/tech.svg",
               descricao: "Pichau*Informatica",
               valor: 200.00,
-              data: DateTime.now().subtract(Duration(days: 3))),
+              data: DateTime.now().subtract(Duration(days: 5))),
           LancamentoModel(
             imagem: "assets/images/leisure.svg",
               descricao: "Steam Game",
