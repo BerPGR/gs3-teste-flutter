@@ -14,32 +14,32 @@ class HomeViewModel extends ChangeNotifier {
           LancamentoModel(
             imagem: "assets/images/shop.svg",
               descricao: "Mercado",
-              valor: 150.75,
+              valor: 89.23,
               data: DateTime.now()),
           LancamentoModel(
             imagem: "assets/images/motion.svg",
               descricao: "Gasolina",
-              valor: 200.00,
+              valor: 60.00,
               data: DateTime.now()),
           LancamentoModel(
             imagem: "assets/images/shop.svg",
               descricao: "Restaurante",
               valor: 80.50,
-              data: DateTime.now().subtract(Duration(days: 5))),
+              data: DateTime.now().subtract(Duration(days: 5,hours: 3))),
           LancamentoModel(
             imagem: "assets/images/shop.svg",
               descricao: "Farmácia",
-              valor: 50.00,
+              valor: 7.85,
               data: DateTime.now().subtract(Duration(days: 5))),
           LancamentoModel(
             imagem: "assets/images/leisure.svg",
-              descricao: "Streaming",
+              descricao: "Netflix",
               valor: 39.90,
               data: DateTime.now().subtract(Duration(days: 9))),
           LancamentoModel(
             imagem: "assets/images/motion.svg",
               descricao: "Uber",
-              valor: 25.00,
+              valor: 12.97,
               data: DateTime.now().subtract(Duration(days: 12))),
         ],
         cardColor: [
@@ -54,33 +54,33 @@ class HomeViewModel extends ChangeNotifier {
         bestDay: 20,
                 lancamentos: [
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "Mercado",
-              valor: 150.75,
+            imagem: "assets/images/study.svg",
+              descricao: "Curso Inglês",
+              valor: 99.90,
               data: DateTime.now().subtract(Duration(days: 5))),
           LancamentoModel(
-            imagem: "assets/images/motion.svg",
-              descricao: "Gasolina",
-              valor: 200.00,
+            imagem: "assets/images/leisure.svg",
+              descricao: "Crunchyroll",
+              valor: 29.90,
               data: DateTime.now().subtract(Duration(days: 7))),
           LancamentoModel(
-            imagem: "assets/images/shop.svg",
-              descricao: "Restaurante",
-              valor: 80.50,
+            imagem: "assets/images/motion.svg",
+              descricao: "BRB",
+              valor: 3.80,
               data: DateTime.now().subtract(Duration(days: 12))),
           LancamentoModel(
             imagem: "assets/images/shop.svg",
-              descricao: "Farmácia",
-              valor: 50.00,
+              descricao: "Zé Padoca's",
+              valor: 13.47,
               data: DateTime.now().subtract(Duration(days: 12))),
           LancamentoModel(
-            imagem: "assets/images/leisure.svg",
-              descricao: "Streaming",
-              valor: 39.90,
+            imagem: "assets/images/tech.svg",
+              descricao: "Apple",
+              valor: 4.50,
               data: DateTime.now().subtract(Duration(days: 20))),
           LancamentoModel(
-            imagem: "assets/images/motion.svg",
-              descricao: "Uber",
+            imagem: "assets/images/shop.svg",
+              descricao: "CanelaCafe",
               valor: 25.00,
               data: DateTime.now().subtract(Duration(days: 24))),
         ],
@@ -94,7 +94,7 @@ class HomeViewModel extends ChangeNotifier {
                 lancamentos: [
           LancamentoModel(
             imagem: "assets/images/study.svg",
-              descricao: "Curso Udemy Java",
+              descricao: "Curso Java",
               valor: 150.75,
               data: DateTime.now().subtract(Duration(days: 4))),
           LancamentoModel(
