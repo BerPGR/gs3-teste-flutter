@@ -11,7 +11,31 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 600),
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 thickness: 0.5,
               ),
-              Cartoes(),
+              FadeTransition(
+                opacity: _fadeAnimation,
+                child: Cartoes()),
               const Divider(
                 color: Colors.white,
                 thickness: 0.5,
@@ -44,7 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Favoritos(),
               const Divider(),
-              const SizedBox(height: 12,),
+              const SizedBox(
+                height: 12,
+              ),
               UltimosLancamentos(),
             ],
           ),
