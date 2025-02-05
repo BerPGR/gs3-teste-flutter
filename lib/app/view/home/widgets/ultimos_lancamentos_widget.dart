@@ -26,7 +26,7 @@ class UltimosLancamentos extends StatelessWidget {
               onTap: () { 
                 final cartaoAtual = context.read<HomeViewModel>().cartaoSelecionado.value;
                 if (cartaoAtual != null) {
-                  Navigator.of(context).pushNamed('/posting', arguments: {'cartao': cartaoAtual, 'lancamentos': cartaoAtual.lancamentos});}
+                  Navigator.of(context).pushNamed('/posting', arguments: {'cartao': cartaoAtual, 'lancamentos': cartaoAtual.postings});}
                 },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,25 +49,25 @@ class UltimosLancamentos extends StatelessWidget {
           return ValueListenableBuilder<CartaoModel?>(
               valueListenable: viewModel.cartaoSelecionado,
               builder: (context, cartao, _) {
-                if (cartao == null || cartao.lancamentos.isEmpty) {
+                if (cartao == null || cartao.postings.isEmpty) {
                   return Center(child: Text("Nenhum lançamento disponível"));
                 }
 
-                final Map<String, List<LancamentoModel>> lancamentosAgrupados =
+                final Map<String, List<LancamentoModel>> groupedPostings =
                     {};
-                for (var lancamento in viewModel.ultimosLancamentos) {
-                  String dataFormatada = formatarData(lancamento.data);
-                  if (!lancamentosAgrupados.containsKey(dataFormatada)) {
-                    lancamentosAgrupados[dataFormatada] = [];
+                for (var posting in viewModel.ultimosLancamentos) {
+                  String dataFormatada = formatarData(posting.date);
+                  if (!groupedPostings.containsKey(dataFormatada)) {
+                    groupedPostings[dataFormatada] = [];
                   }
-                  lancamentosAgrupados[dataFormatada]!.add(lancamento);
+                  groupedPostings[dataFormatada]!.add(posting);
                 }
 
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: lancamentosAgrupados.entries.map((entry) {
+                  children: groupedPostings.entries.map((entry) {
                     String data = entry.key;
-                    List<LancamentoModel> lancamentos = entry.value;
+                    List<LancamentoModel> postings = entry.value;
 
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,30 +83,31 @@ class UltimosLancamentos extends StatelessWidget {
                             ),
                           ),
                         ),
-                        ...lancamentos.map((lancamento) {
+                        ...postings.map((posting) {
                           return ListTile(
-                            onTap: () => mostrarDetalhesLancamento(context, lancamento),
+                            onTap: () => mostrarDetalhesLancamento(context, posting),
                             leading:
-                                SvgPicture.asset(lancamento.imagem, width: 30),
+                                SvgPicture.asset(posting.image, width: 30),
                             trailing: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "R\$${formatarValor(lancamento.valor)}",
+                                  "R\$${formatarValor(posting.value)}",
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text("")
+                                Text(posting.installments == 0 ? "" : "em ${posting.installments}x")
                               ],
                             ),
                             title: Text(
-                              lancamento.descricao,
+                              posting.description,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(
-                              formatarSubtitulo(lancamento.data),
+                              formatarSubtitulo(posting.date),
                               style: TextStyle(fontSize: 14),
                             ),
                           );
