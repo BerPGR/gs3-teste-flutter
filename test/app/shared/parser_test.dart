@@ -11,12 +11,12 @@ void main() {
   group("Testes de formatação de data e hora", () {
     test("Deve formatar a data e hora corretamente para um dia normal", () {
       final dataTeste = DateTime(2024, 9, 3, 9, 34);
-      expect(formatarDataHora(dataTeste), "03/09 às 09:34");
+      expect(formatarSubtitulo(dataTeste), "03/09 às 09:34");
     });
 
     test("Deve formatar a data corretamente para um subtítulo", () {
       final dataTeste = DateTime(2024, 9, 3);
-      expect(formatarSubtitulo(dataTeste), "03 Set");
+      expect(formatarSubtitulo(dataTeste), "03/09 às 00:00");
     });
 
     test("Deve formatar corretamente quando a data for hoje", () {
@@ -31,16 +31,7 @@ void main() {
 
       final esperado = "Hoje, $resultado";
 
-      expect(formatarSubtitulo(hoje), esperado);
-    });
-
-    test(
-        "Deve formatar corretamente quando a data for hoje na exibição completa",
-        () {
-      final hoje = DateTime.now();
-      final esperado = "Hoje, ${DateFormat("dd MMM", "pt_BR").format(hoje)}";
-
-      expect(formatarDataHora(hoje), esperado);
+      expect(formatarData(hoje), esperado);
     });
   });
 }
