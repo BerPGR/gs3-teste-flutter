@@ -1,8 +1,9 @@
 class LancamentoModel {
-  final String descricao;
-  final double valor;
-  final DateTime data;
-  final String imagem;
+  final String description;
+  final double value;
+  final DateTime date;
+  final String image;
+  final int installments;
 
-  LancamentoModel({required this.descricao, required this.valor, required this.data, required this.imagem});
+  LancamentoModel({required this.description, required this.value, required this.date, required this.image, required this.installments});
 }
