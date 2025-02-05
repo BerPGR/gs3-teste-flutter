@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gs3/app/view/home/widgets/cartoes.dart';
-import 'package:gs3/app/view/home/widgets/favoritos.dart';
-import 'package:gs3/app/view/home/widgets/top_app_bar.dart';
-import 'package:gs3/app/view/home/widgets/ultimos_lancamentos.dart';
+import 'package:gs3/app/view/home/widgets/cartoes_widget.dart';
+import 'package:gs3/app/view/home/widgets/favoritos_widget.dart';
+import 'package:gs3/app/view/home/widgets/top_app_bar_widget.dart';
+import 'package:gs3/app/view/home/widgets/ultimos_lancamentos_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
