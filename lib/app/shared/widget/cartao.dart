@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gs3/app/model/cartao_model.dart';
+import 'package:gs3/app/shared/utils/number_parser.dart';
 
 class Cartao extends StatelessWidget {
   final CartaoModel cartao;
@@ -8,10 +9,11 @@ class Cartao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(13),
-        width: 40,
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        decoration: BoxDecoration(
+      padding: const EdgeInsets.all(13),
+      height: 160,
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
               cartao.cardColor[0],
@@ -22,7 +24,7 @@ class Cartao extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Column(
+      child: Column(
           children: [
             Row(
               spacing: 16,
@@ -70,7 +72,7 @@ class Cartao extends StatelessWidget {
                       style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
                     Text(
-                      "R\$${cartao.limit.toStringAsFixed(2)}",
+                      "R\$${formatarValor(cartao.limit)}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
@@ -97,6 +99,7 @@ class Cartao extends StatelessWidget {
               ],
             )
           ],
-        ));
+        ),
+    );
   }
 }
