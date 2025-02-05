@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gs3/app/shared/widget/cartao.dart';
+import 'package:gs3/app/shared/widget/cartao_widget.dart';
 import 'package:gs3/app/viewmodel/home_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
