@@ -6,6 +6,11 @@ String formatarSubtitulo(DateTime data) {
   return "${formatoDiaMes.format(data)} às ${formatoHorario.format(data)}";
 }
 
+String formatarMesAno(DateTime data) {
+  final formato = DateFormat("MMM yyyy");
+  return formato.format(data);
+}
+
 String formatarData(DateTime data) {
   final agora = DateTime.now();
   final formatoDiaMes = DateFormat("dd MMM", "pt_BR");
