@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gs3/app/view/home/widgets/cartoes.dart';
 import 'package:gs3/app/view/home/widgets/favoritos.dart';
 import 'package:gs3/app/view/home/widgets/top_app_bar.dart';
+import 'package:gs3/app/view/home/widgets/ultimos_lancamentos.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,9 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 thickness: 0.5,
               ),
               SizedBox(
-                height: 38,
+                height: 12,
               ),
-              Favoritos()
+              Favoritos(),
+              const Divider(),
+              const SizedBox(height: 12,),
+              UltimosLancamentos(),
             ],
           ),
         ),
