@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gs3/app/model/cartao_model.dart';
 import 'package:gs3/app/model/lancamento_model.dart';
-import 'package:gs3/app/view/home/widgets/ultimos_lancamentos_widget.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final List<CartaoModel> _cartoes = [
