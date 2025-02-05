@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gs3/app/model/cartao_model.dart';
 import 'package:gs3/app/model/lancamento_model.dart';
-import 'package:gs3/app/shared/utils/parser.dart';
+import 'package:gs3/app/shared/utils/data_parser.dart';
+import 'package:gs3/app/shared/utils/number_parser.dart';
 import 'package:gs3/app/viewmodel/home_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:gs3/app/shared/utils/show_bottom_dialog.dart';
 
 class UltimosLancamentos extends StatelessWidget {
   const UltimosLancamentos({super.key});
@@ -20,19 +22,26 @@ class UltimosLancamentos extends StatelessWidget {
               "Últimos lançamentos",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Ver todos",
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-                ),
-                Icon(
-                  Icons.chevron_right_outlined,
-                  color: Color(0xFF3C6AB2),
-                  size: 28,
-                )
-              ],
+            GestureDetector(
+              onTap: () { 
+                final cartaoAtual = context.read<HomeViewModel>().cartaoSelecionado.value;
+                if (cartaoAtual != null) {
+                  Navigator.of(context).pushNamed('/posting', arguments: {'cartao': cartaoAtual, 'lancamentos': cartaoAtual.lancamentos});}
+                },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Ver todos",
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
+                  Icon(
+                    Icons.chevron_right_outlined,
+                    color: Color(0xFF3C6AB2),
+                    size: 28,
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -70,24 +79,36 @@ class UltimosLancamentos extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              color: Color(0xFF2890CF),
                             ),
                           ),
                         ),
-
                         ...lancamentos.map((lancamento) {
                           return ListTile(
-                            leading: SvgPicture.asset(lancamento.imagem,
-                                width: 40, height: 40),
-                                trailing: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("R\$${lancamento.valor.toStringAsFixed(2)}", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
-                                    Text("")
-                                  ],
+                            onTap: () => mostrarDetalhesLancamento(context, lancamento),
+                            leading:
+                                SvgPicture.asset(lancamento.imagem, width: 30),
+                            trailing: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "R\$${formatarValor(lancamento.valor)}",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                            title: Text(lancamento.descricao),
-                            subtitle: Text(formatarSubtitulo(lancamento.data)),
+                                Text("")
+                              ],
+                            ),
+                            title: Text(
+                              lancamento.descricao,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              formatarSubtitulo(lancamento.data),
+                              style: TextStyle(fontSize: 14),
+                            ),
                           );
                         })
                       ],
