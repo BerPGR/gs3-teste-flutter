@@ -5,7 +5,7 @@ import 'package:gs3/app/shared/utils/data_parser.dart';
 import 'package:gs3/app/shared/utils/number_parser.dart';
 
 void mostrarDetalhesLancamento(
-    BuildContext context, LancamentoModel lancamento) {
+    BuildContext context, LancamentoModel posting) {
   showModalBottomSheet(
     context: context,
     shape: RoundedRectangleBorder(
@@ -31,20 +31,25 @@ void mostrarDetalhesLancamento(
                 ),
               ),
               Center(
-                child: SvgPicture.asset(lancamento.imagem, width: 50, height: 50),
+                child: SvgPicture.asset(posting.image, width: 50, height: 50),
               ),
               Text(
-                "Compra - ${lancamento.descricao}",
+                "Compra - ${posting.description}",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
-                "Data da compra - ${formatarData(lancamento.data)}",
+                "Data da compra - ${formatarData(posting.date)}",
                 style: TextStyle(fontSize: 14),
               ),
               Text(
-                "Valor: R\$${formatarValor(lancamento.valor)}",
+                "Valor total: R\$${formatarValor(posting.value)}",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              if (posting.installments > 0)
+                Text(
+                  "${posting.installments} x R\$${formatarValor((posting.value/posting.installments))}",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               const Spacer(),
               TextButton(
                 onPressed: () => Navigator.pop(context),
